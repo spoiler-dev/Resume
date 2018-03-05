@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>类型转换</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="main.js"></script>
+</head>
+
+<body>
+    <script type="text/javascript">
+        // Number 函数：转换成数值
+        // 转化后还是原来的值
+        console.log(Number(324)); // 324
+        // 如果可以被解析为数值，则转换为相应的数值，负责得到 NaN。空字符串转为 0。
+        console.log(Number("324")); // 3224
+
+        console.log(Number("324abc")); // NaN
+
+        console.log(Number("")); // 0
+        // ture 转为 1，false 转为 0。
+        console.log(Number(false)); // 0
+        // 转为NaN
+        console.log(Number(undefined)); // NaN
+        // 转为0
+        console.log(Number(null)); // 0
+        var a = {
+            a: 1
+        }
+        console.log('a', Number({
+            a: 1
+        }));
+    </script>
+
+    <script type="text/javascript">
+        //String  函数
+        // 数值：转为相应的字符串。
+        console.log(String(123)); // "123"
+
+        // 字符串：转换后还是原来的值。
+        console.log(String("abc")); // "abc"
+
+        // 布尔值：ture 转为「ture」，false 转为「false」。
+        console.log(String(true)); // "true"
+
+        // undefined：转为「undefined」。
+        console.log(String(undefined)); // "undefined"
+
+        // null：转为「null」。
+        console.log(String(null)); // "null"
+
+        var b = {
+            b: 1,
+            toString: function () {
+                return {
+                    b: 2,
+                };
+            },
+            valueOf: function () {
+                return 'b';
+            },
+        };
+        console.log('b', String(b));
+    </script>
+
+    <script type="text/javascript">
+        // 以下六个值的转化结果为false，其他的值全部为true。
+        // undefined
+        // null
+        // -0
+        // +0
+        // NaN
+        // ''（空字符串）
+        console.log(Boolean(undefined)); // false
+
+        console.log(Boolean(null)); // false
+
+        console.log(Boolean(0)); // false
+
+        console.log(Boolean(NaN)); // false
+
+        console.log(Boolean('')); // false
+
+        var b = {
+            b: 1,
+            toString: function () {
+                return {
+                    b: 2,
+                };
+            },
+            valueOf: function () {
+                return 'b';
+            },
+        };
+        console.log('b', String(b));
+    </script>
+</body>
+
+</html>
