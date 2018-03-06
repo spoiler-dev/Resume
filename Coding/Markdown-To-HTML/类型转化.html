@@ -1,0 +1,163 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>类型转化</title>
+</head>
+
+<body>
+	<div id="wmd-preview" class="wmd-preview">
+		<div class="md-section-divider"></div>
+		<div class="md-section-divider"></div>
+		<h1 data-anchor-id="wh6g" id="类型转化">类型转化</h1>
+		<p data-anchor-id="bylo">
+			<code>javascript</code>
+		</p>
+		<hr>
+		<div class="md-section-divider"></div>
+		<h3 data-anchor-id="fd63" id="类型转化-1">
+			<strong>类型转化</strong>
+		</h3>
+		<blockquote data-anchor-id="l0c6" class="white-blockquote">
+			<p>最新的 ECMAscript 标准定义了7种数据类型
+				<br> 原始类型：Boolean、Null、Undefined、Number、String、Symbol「ES6 新增」 对象：Object</p>
+		</blockquote>
+		<ul data-anchor-id="ih0v">
+			<li>数据类型
+				<br>
+				<ul>
+					<li>显式类型转换 「手动执行」
+						<br>
+						<ul>
+							<li>Number 函数
+								<br>
+								<ol>
+									<li>原始类型转换
+										<br>
+										<ul>
+											<li>数值：转换后还是原来的值。</li>
+											<li>字符串：如果可以被解析为数值，则转换为相应的数值，负责得到 NaN。空字符串转为 0。</li>
+											<li>布尔值：ture 转为 1，false 转为 0。</li>
+											<li>undefined：转为NaN。</li>
+											<li>null：转成 0。</li>
+										</ul>
+									</li>
+									<li>对象类型转化
+										<br>
+										<ul>
+											<li>先调用对象自身的 valueOf 方法，如果该方法返回原始类型的值「数值、字符串和布尔值」，则直接对该值使用 Number 方法，不再进行后续步骤。</li>
+											<li>如果 valueOf 方法返回符合类型的值，再调用对象自身的 toString 方法，如果 toString 方法返回原始类型的值，则对该值使用 Number 方法，不再进行后续步骤。如果 toString 方法返回复合类型的值，则报错。</li>
+										</ul>
+									</li>
+								</ol>
+							</li>
+							<li>String 函数
+								<br>
+								<ol>
+									<li>原始类型转换
+										<br>
+										<ul>
+											<li>数值：转为相应的字符串。</li>
+											<li>字符串：转换后还是原来的值。</li>
+											<li>布尔值：ture 转为「ture」，false 转为「false」。</li>
+											<li>undefined：转为「undefined」。</li>
+											<li>null：转为「null」。</li>
+										</ul>
+									</li>
+									<li>对象类型转化 </li>
+								</ol>
+							</li>
+							<li>Boolean 函数
+								<br>
+								<ol>
+									<li>原始类型转换
+										<br>
+										<ul>
+											<li>undefined：</li>
+											<li>null：</li>
+											<li>-0：</li>
+											<li>+0：</li>
+											<li>NaN：</li>
+											<li>''空字符串</li>
+											<li>以上全部转化为 false，其他都转换为 ture。</li>
+										</ul>
+									</li>
+									<li>对象类型转化
+										<br>
+										<ul>
+											<li>先调用对象自身的 toString 方法，如果该方法返回原始类型的值，则直接对该值使用 String 方法，不再进行后续步骤。</li>
+											<li>如果 toString 方法返回符合类型的值，再调用对象自身的 valueOf 方法，如果 valueOf 方法返回原始类型的值，则对该值使用 String 方法，不再进行后续步骤。如果 valueOf 方法返回复合类型的值，则报错。</li>
+										</ul>
+									</li>
+								</ol>
+							</li>
+						</ul>
+					</li>
+					<li>隐式类型转换 「程序内部执行」
+						<br>
+						<ul>
+							<li>四则运算</li>
+							<li>判断语句</li>
+							<li>Native 调用「alert、console.log」</li>
+							<li>typeof</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+		</ul>
+		<table data-anchor-id="sxmh" class="table table-striped-white table-bordered">
+			<thead>
+				<tr>
+					<th>表达式</th>
+					<th style="text-align:center;">返回值</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>typeof undefined</td>
+					<td style="text-align:center;">'undefined'</td>
+				</tr>
+				<tr>
+					<td>typeof null</td>
+					<td style="text-align:center;">'object'</td>
+				</tr>
+				<tr>
+					<td>typeof true</td>
+					<td style="text-align:center;">'boolean'</td>
+				</tr>
+				<tr>
+					<td>typeof 123</td>
+					<td style="text-align:center;">'number'</td>
+				</tr>
+				<tr>
+					<td>typeof "abc"</td>
+					<td style="text-align:center;">'string'</td>
+				</tr>
+				<tr>
+					<td>typeof function() {}</td>
+					<td style="text-align:center;">'function'</td>
+				</tr>
+				<tr>
+					<td>typeof {}</td>
+					<td style="text-align:center;">'object'</td>
+				</tr>
+				<tr>
+					<td>typeof []</td>
+					<td style="text-align:center;">'object'</td>
+				</tr>
+				<tr>
+					<td>typeof unknownVariable</td>
+					<td style="text-align:center;">'undefined'</td>
+				</tr>
+			</tbody>
+		</table>
+		<p data-anchor-id="eg4y">
+			<strong>实例：</strong>
+		</p>
+		<div class="md-section-divider"></div>
+		<pre class="prettyprint linenums prettyprinted" data-anchor-id="ayum" style=""><ol class="linenums"><li class="L0"><code><span class="dec">&lt;!DOCTYPE html&gt;</span></code></li><li class="L1"><code><span class="tag">&lt;html&gt;</span></code></li><li class="L2"><code></code></li><li class="L3"><code><span class="tag">&lt;head&gt;</span></code></li><li class="L4"><code><span class="pln">    </span><span class="tag">&lt;meta</span><span class="pln"> </span><span class="atn">charset</span><span class="pun">=</span><span class="atv">"utf-8"</span><span class="pln"> </span><span class="tag">/&gt;</span></code></li><li class="L5"><code><span class="pln">    </span><span class="tag">&lt;meta</span><span class="pln"> </span><span class="atn">http-equiv</span><span class="pun">=</span><span class="atv">"X-UA-Compatible"</span><span class="pln"> </span><span class="atn">content</span><span class="pun">=</span><span class="atv">"IE=edge"</span><span class="tag">&gt;</span></code></li><li class="L6"><code><span class="pln">    </span><span class="tag">&lt;title&gt;</span><span class="pln">类型转换</span><span class="tag">&lt;/title&gt;</span></code></li><li class="L7"><code><span class="pln">    </span><span class="tag">&lt;meta</span><span class="pln"> </span><span class="atn">name</span><span class="pun">=</span><span class="atv">"viewport"</span><span class="pln"> </span><span class="atn">content</span><span class="pun">=</span><span class="atv">"width=device-width, initial-scale=1"</span><span class="tag">&gt;</span></code></li><li class="L8"><code><span class="pln">    </span><span class="tag">&lt;script</span><span class="pln"> </span><span class="atn">src</span><span class="pun">=</span><span class="atv">"main.js"</span><span class="tag">&gt;&lt;/script&gt;</span></code></li><li class="L9"><code><span class="tag">&lt;/head&gt;</span></code></li><li class="L0"><code></code></li><li class="L1"><code><span class="tag">&lt;body&gt;</span></code></li><li class="L2"><code><span class="pln">    </span><span class="tag">&lt;script</span><span class="pln"> </span><span class="atn">type</span><span class="pun">=</span><span class="atv">"text/javascript"</span><span class="tag">&gt;</span></code></li><li class="L3"><code><span class="pln">        </span><span class="com">// Number 函数：转换成数值</span></code></li><li class="L4"><code><span class="pln">        </span><span class="com">// 转化后还是原来的值</span></code></li><li class="L5"><code><span class="pln">        console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="typ">Number</span><span class="pun">(</span><span class="lit">324</span><span class="pun">));</span><span class="pln"> </span><span class="com">// 324</span></code></li><li class="L6"><code><span class="pln">        </span><span class="com">// 如果可以被解析为数值，则转换为相应的数值，负责得到 NaN。空字符串转为 0。</span></code></li><li class="L7"><code><span class="pln">        console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="typ">Number</span><span class="pun">(</span><span class="str">"324"</span><span class="pun">));</span><span class="pln"> </span><span class="com">// 3224</span></code></li><li class="L8"><code></code></li><li class="L9"><code><span class="pln">        console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="typ">Number</span><span class="pun">(</span><span class="str">"324abc"</span><span class="pun">));</span><span class="pln"> </span><span class="com">// NaN</span></code></li><li class="L0"><code></code></li><li class="L1"><code><span class="pln">        console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="typ">Number</span><span class="pun">(</span><span class="str">""</span><span class="pun">));</span><span class="pln"> </span><span class="com">// 0</span></code></li><li class="L2"><code><span class="pln">        </span><span class="com">// ture 转为 1，false 转为 0。</span></code></li><li class="L3"><code><span class="pln">        console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="typ">Number</span><span class="pun">(</span><span class="kwd">false</span><span class="pun">));</span><span class="pln"> </span><span class="com">// 0</span></code></li><li class="L4"><code><span class="pln">        </span><span class="com">// 转为NaN</span></code></li><li class="L5"><code><span class="pln">        console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="typ">Number</span><span class="pun">(</span><span class="kwd">undefined</span><span class="pun">));</span><span class="pln"> </span><span class="com">// NaN</span></code></li><li class="L6"><code><span class="pln">        </span><span class="com">// 转为0</span></code></li><li class="L7"><code><span class="pln">        console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="typ">Number</span><span class="pun">(</span><span class="kwd">null</span><span class="pun">));</span><span class="pln"> </span><span class="com">// 0</span></code></li><li class="L8"><code><span class="pln">        </span><span class="kwd">var</span><span class="pln"> a </span><span class="pun">=</span><span class="pln"> </span><span class="pun">{</span></code></li><li class="L9"><code><span class="pln">            a</span><span class="pun">:</span><span class="pln"> </span><span class="lit">1</span></code></li><li class="L0"><code><span class="pln">        </span><span class="pun">}</span></code></li><li class="L1"><code><span class="pln">        console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="str">'a'</span><span class="pun">,</span><span class="pln"> </span><span class="typ">Number</span><span class="pun">({</span></code></li><li class="L2"><code><span class="pln">            a</span><span class="pun">:</span><span class="pln"> </span><span class="lit">1</span></code></li><li class="L3"><code><span class="pln">        </span><span class="pun">}));</span></code></li><li class="L4"><code><span class="pln">    </span><span class="tag">&lt;/script&gt;</span></code></li><li class="L5"><code></code></li><li class="L6"><code><span class="pln">    </span><span class="tag">&lt;script</span><span class="pln"> </span><span class="atn">type</span><span class="pun">=</span><span class="atv">"text/javascript"</span><span class="tag">&gt;</span></code></li><li class="L7"><code><span class="pln">        </span><span class="com">//String  函数</span></code></li><li class="L8"><code><span class="pln">        </span><span class="com">// 数值：转为相应的字符串。</span></code></li><li class="L9"><code><span class="pln">        console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="typ">String</span><span class="pun">(</span><span class="lit">123</span><span class="pun">));</span><span class="pln"> </span><span class="com">// "123"</span></code></li><li class="L0"><code></code></li><li class="L1"><code><span class="pln">        </span><span class="com">// 字符串：转换后还是原来的值。</span></code></li><li class="L2"><code><span class="pln">        console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="typ">String</span><span class="pun">(</span><span class="str">"abc"</span><span class="pun">));</span><span class="pln"> </span><span class="com">// "abc"</span></code></li><li class="L3"><code></code></li><li class="L4"><code><span class="pln">        </span><span class="com">// 布尔值：ture 转为「ture」，false 转为「false」。</span></code></li><li class="L5"><code><span class="pln">        console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="typ">String</span><span class="pun">(</span><span class="kwd">true</span><span class="pun">));</span><span class="pln"> </span><span class="com">// "true"</span></code></li><li class="L6"><code></code></li><li class="L7"><code><span class="pln">        </span><span class="com">// undefined：转为「undefined」。</span></code></li><li class="L8"><code><span class="pln">        console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="typ">String</span><span class="pun">(</span><span class="kwd">undefined</span><span class="pun">));</span><span class="pln"> </span><span class="com">// "undefined"</span></code></li><li class="L9"><code></code></li><li class="L0"><code><span class="pln">        </span><span class="com">// null：转为「null」。</span></code></li><li class="L1"><code><span class="pln">        console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="typ">String</span><span class="pun">(</span><span class="kwd">null</span><span class="pun">));</span><span class="pln"> </span><span class="com">// "null"</span></code></li><li class="L2"><code></code></li><li class="L3"><code><span class="pln">        </span><span class="kwd">var</span><span class="pln"> b </span><span class="pun">=</span><span class="pln"> </span><span class="pun">{</span></code></li><li class="L4"><code><span class="pln">            b</span><span class="pun">:</span><span class="pln"> </span><span class="lit">1</span><span class="pun">,</span></code></li><li class="L5"><code><span class="pln">            toString</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">function</span><span class="pln"> </span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span></code></li><li class="L6"><code><span class="pln">                </span><span class="kwd">return</span><span class="pln"> </span><span class="pun">{</span></code></li><li class="L7"><code><span class="pln">                    b</span><span class="pun">:</span><span class="pln"> </span><span class="lit">2</span><span class="pun">,</span></code></li><li class="L8"><code><span class="pln">                </span><span class="pun">};</span></code></li><li class="L9"><code><span class="pln">            </span><span class="pun">},</span></code></li><li class="L0"><code><span class="pln">            valueOf</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">function</span><span class="pln"> </span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span></code></li><li class="L1"><code><span class="pln">                </span><span class="kwd">return</span><span class="pln"> </span><span class="str">'b'</span><span class="pun">;</span></code></li><li class="L2"><code><span class="pln">            </span><span class="pun">},</span></code></li><li class="L3"><code><span class="pln">        </span><span class="pun">};</span></code></li><li class="L4"><code><span class="pln">        console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="str">'b'</span><span class="pun">,</span><span class="pln"> </span><span class="typ">String</span><span class="pun">(</span><span class="pln">b</span><span class="pun">));</span></code></li><li class="L5"><code><span class="pln">    </span><span class="tag">&lt;/script&gt;</span></code></li><li class="L6"><code></code></li><li class="L7"><code><span class="pln">    </span><span class="tag">&lt;script</span><span class="pln"> </span><span class="atn">type</span><span class="pun">=</span><span class="atv">"text/javascript"</span><span class="tag">&gt;</span></code></li><li class="L8"><code><span class="pln">        </span><span class="com">// 以下六个值的转化结果为false，其他的值全部为true。</span></code></li><li class="L9"><code><span class="pln">        </span><span class="com">// undefined</span></code></li><li class="L0"><code><span class="pln">        </span><span class="com">// null</span></code></li><li class="L1"><code><span class="pln">        </span><span class="com">// -0</span></code></li><li class="L2"><code><span class="pln">        </span><span class="com">// +0</span></code></li><li class="L3"><code><span class="pln">        </span><span class="com">// NaN</span></code></li><li class="L4"><code><span class="pln">        </span><span class="com">// ''（空字符串）</span></code></li><li class="L5"><code><span class="pln">        console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="typ">Boolean</span><span class="pun">(</span><span class="kwd">undefined</span><span class="pun">));</span><span class="pln"> </span><span class="com">// false</span></code></li><li class="L6"><code></code></li><li class="L7"><code><span class="pln">        console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="typ">Boolean</span><span class="pun">(</span><span class="kwd">null</span><span class="pun">));</span><span class="pln"> </span><span class="com">// false</span></code></li><li class="L8"><code></code></li><li class="L9"><code><span class="pln">        console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="typ">Boolean</span><span class="pun">(</span><span class="lit">0</span><span class="pun">));</span><span class="pln"> </span><span class="com">// false</span></code></li><li class="L0"><code></code></li><li class="L1"><code><span class="pln">        console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="typ">Boolean</span><span class="pun">(</span><span class="kwd">NaN</span><span class="pun">));</span><span class="pln"> </span><span class="com">// false</span></code></li><li class="L2"><code></code></li><li class="L3"><code><span class="pln">        console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="typ">Boolean</span><span class="pun">(</span><span class="str">''</span><span class="pun">));</span><span class="pln"> </span><span class="com">// false</span></code></li><li class="L4"><code></code></li><li class="L5"><code><span class="pln">        </span><span class="kwd">var</span><span class="pln"> b </span><span class="pun">=</span><span class="pln"> </span><span class="pun">{</span></code></li><li class="L6"><code><span class="pln">            b</span><span class="pun">:</span><span class="pln"> </span><span class="lit">1</span><span class="pun">,</span></code></li><li class="L7"><code><span class="pln">            toString</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">function</span><span class="pln"> </span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span></code></li><li class="L8"><code><span class="pln">                </span><span class="kwd">return</span><span class="pln"> </span><span class="pun">{</span></code></li><li class="L9"><code><span class="pln">                    b</span><span class="pun">:</span><span class="pln"> </span><span class="lit">2</span><span class="pun">,</span></code></li><li class="L0"><code><span class="pln">                </span><span class="pun">};</span></code></li><li class="L1"><code><span class="pln">            </span><span class="pun">},</span></code></li><li class="L2"><code><span class="pln">            valueOf</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">function</span><span class="pln"> </span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span></code></li><li class="L3"><code><span class="pln">                </span><span class="kwd">return</span><span class="pln"> </span><span class="str">'b'</span><span class="pun">;</span></code></li><li class="L4"><code><span class="pln">            </span><span class="pun">},</span></code></li><li class="L5"><code><span class="pln">        </span><span class="pun">};</span></code></li><li class="L6"><code><span class="pln">        console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="str">'b'</span><span class="pun">,</span><span class="pln"> </span><span class="typ">String</span><span class="pun">(</span><span class="pln">b</span><span class="pun">));</span></code></li><li class="L7"><code><span class="pln">    </span><span class="tag">&lt;/script&gt;</span></code></li><li class="L8"><code><span class="tag">&lt;/body&gt;</span></code></li><li class="L9"><code></code></li><li class="L0"><code><span class="tag">&lt;/html&gt;</span></code></li></ol></pre>
+	</div>
+</body>
+
+</html>

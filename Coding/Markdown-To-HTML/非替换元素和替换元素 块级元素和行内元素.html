@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>非替换元素和替换元素 块级元素和行内元素</title>
+</head>
+
+<body>
+	<div id="wmd-preview" class="wmd-preview">
+		<div class="md-section-divider"></div>
+		<div class="md-section-divider"></div>
+		<h1 data-anchor-id="51ib" id="非替换元素和替换元素-块级元素和行内元素">非替换元素和替换元素 块级元素和行内元素</h1>
+		<p data-anchor-id="femj">
+			<code>HTML</code>
+		</p>
+		<hr>
+		<div class="md-section-divider"></div>
+		<h3 data-anchor-id="f1xn" id="1-替换和不可替换元素">
+			<strong>1. 替换和不可替换元素</strong>
+		</h3>
+		<blockquote data-anchor-id="chx0" class="white-blockquote">
+			<p>从元素本身的特点来讲，可以分为替换和不可替换元素。</p>
+		</blockquote>
+		<ul data-anchor-id="dhvg">
+			<li>
+				<strong>替换元素</strong>
+			</li>
+		</ul>
+		<blockquote data-anchor-id="ldbr" class="white-blockquote">
+			<p>替换元素就是浏览器根据元素的标签和属性，来决定元素的具体显示内容。</p>
+		</blockquote>
+		<p data-anchor-id="obbn">例如浏览器会根据
+			<code>&lt;img&gt;</code> 标签的 src 属性的值来读取图片信息并显示出来，而如果查看 HTML 代码，则看不到图片的实际内容；又例如根据
+			<code>&lt;input&gt;</code> 标签的 type 属性来决定是显示输入框，还是单选按钮等。</p>
+		<p data-anchor-id="9ti4">HTML 中的
+			<code>&lt;img&gt;</code> 、
+			<code>&lt;input&gt;</code>、
+			<code>&lt;textarea&gt;</code> 、
+			<code>&lt;select&gt;</code> 、
+			<code>&lt;object&gt;</code> 都是替换元素。这些元素往往没有实际的内容，即是一个空元素，例如：</p>
+		<div class="md-section-divider"></div>
+		<pre class="prettyprint linenums prettyprinted" data-anchor-id="9pnf" style=""><ol class="linenums"><li class="L0"><code><span class="pln">    </span><span class="tag">&lt;img</span><span class="pln"> </span><span class="atn">src</span><span class="pun">=</span><span class="atv">”cat.jpg”</span><span class="pln"> </span><span class="tag">/&gt;</span></code></li><li class="L1"><code><span class="pln">    </span><span class="tag">&lt;input</span><span class="pln"> </span><span class="atn">type</span><span class="pun">=</span><span class="atv">"submit"</span><span class="pln"> </span><span class="atn">name</span><span class="pun">=</span><span class="atv">"submit"</span><span class="pln"> </span><span class="atn">value</span><span class="pun">=</span><span class="atv">"提交"</span><span class="pln"> </span><span class="tag">/&gt;</span></code></li></ol></pre>
+		<p data-anchor-id="vku0">浏览器会根据元素的标签类型和属性来显示这些元素。可替换元素也在其显示中生成了框。</p>
+		<ul data-anchor-id="g7of">
+			<li>
+				<strong>不可替换元素</strong>
+			</li>
+		</ul>
+		<p data-anchor-id="s1lm">HTML 的大多数元素是不可替换元素，即其内容直接表现给用户端（例如浏览器）。例如：</p>
+		<div class="md-section-divider"></div>
+		<pre class="prettyprint linenums prettyprinted" data-anchor-id="9t72" style=""><ol class="linenums"><li class="L0"><code><span class="pln">    </span><span class="tag">&lt;p&gt;</span><span class="pln">段落的内容</span><span class="tag">&lt;/p&gt;</span></code></li></ol></pre>
+		<p data-anchor-id="he1g">段落
+			<code>&lt;p&gt;</code> 是一个不可替换元素，文字「段落的内容」全被显示。</p>
+		<hr>
+		<div class="md-section-divider"></div>
+		<h3 data-anchor-id="muxs" id="2-显示元素">
+			<strong>2. 显示元素</strong>
+		</h3>
+		<blockquote data-anchor-id="be3u" class="white-blockquote">
+			<p>除了可替换元素和不可替换元素的分类方式外，CSS 2.1 中元素还有另外的分类方式：块级元素（ block-level ）和行内元素（
+				<br> inline-level ，也译作「 内联 」元素）。</p>
+		</blockquote>
+		<ul data-anchor-id="0m33">
+			<li>
+				<strong>块级元素</strong>
+			</li>
+		</ul>
+		<blockquote data-anchor-id="zuov" class="white-blockquote">
+			<p>在视觉上被格式化为块的元素，最明显的特征就是它默认在横向充满其
+				<br> 父元素的内容区域，而且在其左右两边没有其他元素，即块级元素默认是独占一行的。
+			</p>
+		</blockquote>
+		<p data-anchor-id="vtbj">典型的块级元素有：
+			<code>&lt;div&gt;</code> 、
+			<code>&lt;p&gt;</code> 、
+			<code>&lt;h1&gt;</code> 到
+			<code>&lt;h6&gt;</code> ，等等。</p>
+		<p data-anchor-id="94ix">通过 CSS 设定了浮动（ float 属性，可向左浮动或向右浮动）以及设定显示（ display ）属性为「 block 」或「 list-item 」的元素都是块级元素。</p>
+		<p data-anchor-id="t0at">但是浮动元素比较特殊，由于浮动，其旁边可能会有其他元素的存在。而「 list-item 」（列表项
+			<code>&lt;li&gt;</code> ），会在其前面生成圆点符号，或者数字序号。</p>
+		<ul data-anchor-id="dg8w">
+			<li>
+				<strong>行内元素</strong>
+			</li>
+		</ul>
+		<blockquote data-anchor-id="m4g6" class="white-blockquote">
+			<p>行内元素不形成新内容块，即在其左右可以有其他元素，例如
+				<code>&lt;a&gt;</code> 、
+				<code>&lt;span&gt;</code> 、
+				<code>&lt;strong&gt;</code> 等，都是典型的行内级元素。</p>
+		</blockquote>
+		<p data-anchor-id="ogly">display 属性等于「inline」的元素都是行内元素。几乎所有的可替换元素都是行内元素，例如
+			<code>&lt;img&gt;</code> 、
+			<code>&lt;input&gt;</code> 等等。</p>
+		<p data-anchor-id="xl1d">不过元素的类型也不是固定的，通过设定 CSS 的 display属性，可以使行内元素变为块级元素，也可以让块级元素变为行内元素。</p>
+		<p data-anchor-id="l5ke">
+			<strong>License</strong>
+		</p>
+		<blockquote data-anchor-id="hspr" class="white-blockquote">
+			<ul>
+				<li>可以拷贝、转发，但是必须提供原作者信息，同时也不能将本项目用于商业用途</li>
+			</ul>
+		</blockquote>
+	</div>
+</body>
+
+</html>
