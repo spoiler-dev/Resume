@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>面向对象</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+    <script type="text/javascript">
+
+        /* 类的声明 */
+        function Animal () {
+            //通过this表明这是一个构造函数
+            this.name = 'name'; 
+        }
+ 
+        // ES6 中的 class 声明
+        class Animal2 {
+            constructor () { // 构造函数
+                this.name = name;
+            }
+        }
+
+        /* 通过 new 实例化 */
+        console.log(new Animal(),new Animal2());
+
+
+        /* 继承的本质就是原型链 */
+        /* 借助构造函数实现继承 */
+        // 在子类中改变父级 this 的指向
+        function Parent1 () {
+            this.name = 'parent1';
+        }
+        Parent1.prototype.say = function () {};
+        function Child1 () {
+            Parent1.call(this); // call apply 可以改变函数运行上下文
+            this.type = 'child1'; 
+        }
+        console.log(new Child1); // 无参数可省略括号
+       /*  console.log(new Child1().say()); */
+        // 缺点：Parent1 原型链上的东西并不会被 Child1 继承
+
+
+
+        /* 借助原型链实现继承 */
+        function Parent2 () {
+            this.name = 'parent2';
+            this.play = [1,2,3];
+        }
+        function Child2 () {
+            this.type = 'child2';
+        }
+        Child2.prototype = new Parent2(); // 让实例访问到原型对象上
+        console.log(new Child2);
+        
+        var s1 = new Child2();
+        var s2 = new Child2();
+        console.log(s1.play,s2.play);
+        s1.play.push(4);
+
+        // 缺点：对象不隔离，因为原型链中的原型对象是共用的
+        // 改变一个对象的属性，另一个对象中的属性也会随之改变
+
+        /* 组合方式 */
+        function Parent3 () {
+            this.name = 'parent3';
+            this.play = [1,2,3];
+        }
+        function Child3 () {
+            Parent3.call(this);
+            this.type = 'child3';
+        }
+        Child3.prototype = new Parent3();
+        var s3 = new Child3();
+        var s4 = new Child3();
+        s3.play.push(4);
+        console.log(s3.play,s4.play);
+        // 缺点：父级的构造函数执行了两次
+
+        /* 组合方式的优化1 */
+        function Parent4 () {
+            this.name = 'parent4';
+            this.play = [1,2,3];
+        }
+        function Child4 () {
+            Parent3.call(this);
+            this.type = 'child4';
+        }
+        Child4.prototype = Parent4.prototype;
+        var s5 = new Child4();
+        var s6 = new Child4();
+       console.log(s5,s6);
+       console.log(s5 instanceof Child4, s5 instanceof Parent4);
+       console.log(s5.constructor);
+       // 缺点：不能区分实例是由父类创造的还是子类创造的
+
+       /* 组合优化2 */
+       // 原理是通过 Object.create 方法创建一个中间对象，参数是该对象的原型对象，然后把子类的构造函数赋值为该子类
+       function Parent5 () {
+            this.name = 'parent5';
+            this.play = [1,2,3];
+        }
+        function Child5 () {
+            Parent5.call(this);
+            this.type = 'child5';
+        }      
+        Child5.prototype = Object.create(Parent5.prototype);
+        Child5.prototype.constructor = child5;
+
+        var s7 = new Child5();
+        console.log(s7 instanceof Child5,s7 instanceof Parent5);
+    </script>
+</body>
+</html>
